@@ -6,18 +6,21 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { createHistory as history } from 'history';
+// import { createHistory as history } from 'history';
+import { createBrowserHistory } from 'history';
 
 import './application.scss';
 
-import postsReducer from './reducers/posts_reducer';
-import PostsIndex from './containers/posts_index';
-import PostsShow from './containers/posts_show';
-import PostsNew from './containers/posts_new';
+// import postsReducer from './reducers/posts_reducer';
+// import PostsIndex from './containers/posts_index';
+// import PostsShow from './containers/posts_show';
+// import PostsNew from './containers/posts_new';
+
+const history = createBrowserHistory();
 
 const reducers = combineReducers({
-  post: postsReducer,
-  form: formReducer
+  // post: postsReducer,
+  // form: formReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -29,9 +32,7 @@ ReactDOM.render(
       <Router history={history}>
         <div className="thin-container">
           <Switch>
-            <Route path="/" exact component={PostsIndex} />
-            <Route path="/posts/new" exact component={PostsNew} />
-            <Route path="/posts/:id" component={PostsShow} />
+
           </Switch>
         </div>
       </Router>
@@ -43,3 +44,7 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
+// <Route path="/" exact component={PostsIndex} />
+// <Route path="/posts/new" exact component={PostsNew} />
+// <Route path="/posts/:id" component={PostsShow} />
