@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { fetchPosts } from '../actions';
 
 class PostsIndex extends Component {
+
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
+
   renderPosts() {
     return this.props.posts.map((post) => {
       return (
@@ -37,11 +45,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PostsIndex);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchPosts }, dispatch);
+}
 
-// import { bindActionCreators } from 'redux';
+export default connect(mapStateToProps, mapDispatchToProps)(PostsIndex);
+
 // import _ from 'lodash';
-// import { fetchPosts } from '../actions/index';
 
 // class PostsIndex extends Component {
 //   componentDidMount() {
@@ -82,8 +92,3 @@ export default connect(mapStateToProps)(PostsIndex);
 //   };
 // }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ fetchPosts }, dispatch);
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(PostsIndex);
