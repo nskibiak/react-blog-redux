@@ -1,8 +1,23 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 class PostsIndex extends Component {
+  renderPosts() {
+
+  }
+
   render() {
-    return "hello";
+    return (
+      <div>
+        <div className="first-row">
+          <h3>Blog</h3>
+            <Link className="btn btn-primary btn-cta" to="/posts/new">
+              Let's write a post!
+            </Link>
+        </div>
+          {this.renderPosts()}
+      </div>
+    );
   }
 }
 
@@ -11,7 +26,6 @@ export default PostsIndex;
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
-// import { Link } from 'react-router-dom';
 // import _ from 'lodash';
 // import { fetchPosts } from '../actions/index';
 
