@@ -12,7 +12,7 @@ import { createBrowserHistory } from 'history';
 import './application.scss';
 
 import postsReducer from './reducers/posts_reducer';
-// import PostsIndex from './containers/posts_index';
+import PostsIndex from './containers/posts_index';
 // import PostsShow from './containers/posts_show';
 // import PostsNew from './containers/posts_new';
 
@@ -32,7 +32,7 @@ ReactDOM.render(
       <Router history={history}>
         <div className="thin-container">
           <Switch>
-
+            <Route path="/" exact component={PostsIndex} />
           </Switch>
         </div>
       </Router>
@@ -45,6 +45,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
-// <Route path="/" exact component={PostsIndex} />
 // <Route path="/posts/new" exact component={PostsNew} />
 // <Route path="/posts/:id" component={PostsShow} />
