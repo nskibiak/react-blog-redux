@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 // import { createHistory as history } from 'history';
 import { createBrowserHistory } from 'history';
 
@@ -13,13 +13,13 @@ import './application.scss';
 
 import postsReducer from './reducers/posts_reducer';
 import PostsIndex from './containers/posts_index';
-// import PostsShow from './containers/posts_show';
+import PostsShow from './containers/posts_show';
 // import PostsNew from './containers/posts_new';
 
 const history = createBrowserHistory();
 
 const reducers = combineReducers({
-  post: postsReducer
+  posts: postsReducer
   // form: formReducer
 });
 
@@ -33,6 +33,7 @@ ReactDOM.render(
         <div className="thin-container">
           <Switch>
             <Route path="/" exact component={PostsIndex} />
+            <Route path="/posts/:id" component={PostsShow} />
           </Switch>
         </div>
       </Router>
@@ -46,4 +47,3 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
 // <Route path="/posts/new" exact component={PostsNew} />
-// <Route path="/posts/:id" component={PostsShow} />
