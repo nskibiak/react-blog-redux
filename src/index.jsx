@@ -14,7 +14,7 @@ import './application.scss';
 import postsReducer from './reducers/posts_reducer';
 import PostsIndex from './containers/posts_index';
 import PostsShow from './containers/posts_show';
-// import PostsNew from './containers/posts_new';
+import PostsNew from './containers/posts_new';
 
 const history = createBrowserHistory();
 
@@ -33,6 +33,7 @@ ReactDOM.render(
         <div className="thin-container">
           <Switch>
             <Route path="/" exact component={PostsIndex} />
+            <Route path="/posts/new" exact component={PostsNew} />
             <Route path="/posts/:id" component={PostsShow} />
           </Switch>
         </div>
@@ -42,8 +43,4 @@ ReactDOM.render(
   document.querySelector('.container')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-
-// <Route path="/posts/new" exact component={PostsNew} />
+// ROUTE ORDER MATTERS: NEW PAGE MUST BE BEFORE SHOW PAGE!!
