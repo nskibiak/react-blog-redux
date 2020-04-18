@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { fetchPost } from '../actions';
 
 class PostsShow extends Component {
+
+  componentDidMount() {
+    if (!this.props.post) {
+      this.props.fetchPost(this.props.match.params.id);
+    }
+  }
+
   render() {
     if (!this.props.post) {
       return <p>Loading...</p>;
@@ -28,4 +38,8 @@ function mapStateToProps(state, ownProps) {
   return { post };
 }
 
-export default connect(mapStateToProps)(PostsShow);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchPost }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsShow);
