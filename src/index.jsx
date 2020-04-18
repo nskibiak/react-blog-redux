@@ -8,6 +8,7 @@ import reduxPromise from 'redux-promise';
 import { Router, Route, Switch } from 'react-router-dom';
 // import { createHistory as history } from 'history';
 import { createBrowserHistory } from 'history';
+import { reducer as formReducer } from 'redux-form';
 
 import './application.scss';
 
@@ -19,8 +20,8 @@ import PostsNew from './containers/posts_new';
 const history = createBrowserHistory();
 
 const reducers = combineReducers({
-  posts: postsReducer
-  // form: formReducer
+  posts: postsReducer,
+  form: formReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

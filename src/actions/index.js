@@ -25,12 +25,13 @@ export function fetchPost(id) {
   };
 }
 
-export function createPost(body) {
+export function createPost(body, callback) {
   const request = fetch(`${ROOT_URL}?key=${API_KEY}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   }).then(response => response.json())
+    .then(callback);
 
   return {
     type: POST_CREATED,
