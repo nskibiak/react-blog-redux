@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
@@ -11,7 +11,7 @@ import { createBrowserHistory } from 'history';
 
 import './application.scss';
 
-// import postsReducer from './reducers/posts_reducer';
+import postsReducer from './reducers/posts_reducer';
 // import PostsIndex from './containers/posts_index';
 // import PostsShow from './containers/posts_show';
 // import PostsNew from './containers/posts_new';
@@ -19,7 +19,7 @@ import './application.scss';
 const history = createBrowserHistory();
 
 const reducers = combineReducers({
-  // post: postsReducer,
+  post: postsReducer
   // form: formReducer
 });
 
