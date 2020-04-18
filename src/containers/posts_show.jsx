@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class PostsShow extends Component {
   render() {
@@ -21,4 +22,10 @@ class PostsShow extends Component {
   }
 }
 
-export default PostsShow;
+function mapStateToProps(state, ownProps) {
+  const idFromUrl = parseInt(ownProps.match.params.id, 10); // From URL
+  const post = state.posts.find(p => p.id === idFromUrl);
+  return { post };
+}
+
+export default connect(mapStateToProps)(PostsShow);
