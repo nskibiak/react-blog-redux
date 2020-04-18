@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class PostsIndex extends Component {
   renderPosts() {
-
+    return this.props.posts.map((post) => {
+      return (
+        <Link to={`/posts/${post.id}`} key={post.id}>
+          <div className="post-item">
+            <h3>{post.title}</h3>
+            <p>{post.content}</p>
+          </div>
+        </Link>
+      );
+    });
   }
 
   render() {
@@ -21,10 +31,14 @@ class PostsIndex extends Component {
   }
 }
 
-export default PostsIndex;
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  };
+}
 
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+export default connect(mapStateToProps)(PostsIndex);
+
 // import { bindActionCreators } from 'redux';
 // import _ from 'lodash';
 // import { fetchPosts } from '../actions/index';
