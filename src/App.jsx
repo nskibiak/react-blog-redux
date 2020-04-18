@@ -1,7 +1,9 @@
 import React from 'react';
 
 function App() {
-  return "a blank canvas"
+  return (
+    <div>A blank canvas</div>
+  );
 }
 
 export default App;
